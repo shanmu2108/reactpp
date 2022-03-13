@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { isVisible } from '@testing-library/user-event/dist/utils';
 
 ReactDOM.render(
   <React.StrictMode>

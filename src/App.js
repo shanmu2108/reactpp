@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Login from './Login';
+import AllUser from './AllUser';
+import Notification from './Notification';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './index.css'
+import Last from './Last';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    
+      <Routes>
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/allUsers" element={<AllUser />} />
+        <Route exact path="/Notification" element={<Notification />} />
+        <Route exact path="/Last" element={<Last />} /> 
+      </Routes>
+     
+   
+      
+      {/* </div> */}
+    </BrowserRouter>
   );
 }
 
