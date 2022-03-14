@@ -16,6 +16,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/allUsers" element={<AllUser />} />
         <Route exact path="/Notification" element={<Notification />} />
+        <Route exact path="/details/:email" element={<Last/>}/>
         <Route exact path="/Last" element={<Last />} /> 
       </Routes>
      

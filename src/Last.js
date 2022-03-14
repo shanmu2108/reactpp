@@ -1,11 +1,12 @@
 import Navbar from "./Navbar";
 import angle from './angle-left.png';
-import { Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Last = () => {
     const [user_details,setuser_details] = useState([])
+    const params=useParams();
     useEffect(() => {
         lastuser();
     },[])
@@ -14,8 +15,9 @@ const Last = () => {
            authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc3NDQ5NzEsImRhdGEiOnsiaWQiOiI2MjA3Y2U4ODBlNGFjMGY4MzgzZDkyNGIiLCJlbWFpbCI6InJpY2tAYWRtaW4uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY0NjIwODk3MX0.Ow8eVdNv7mFC5DCZWl6HTDEUwnkTEiq71tVyTBzJDBk'
 
         };
-        let response = await axios.post('https://api.playinvicta.com/api/v1/admin/user_details',{email:'daniel.mojica@uconn.edu'},{headers})
+        let response = await axios.post('https://api.playinvicta.com/api/v1/admin/user_details',{email:params.email},{headers})
         setuser_details(response.data.data)
+    
         console.log(response)
     }
     return (
@@ -35,7 +37,7 @@ const Last = () => {
                 <div className="secrow">
                     
                         <div id="img1">{user_details.name}</div>
-                        <div id="img2">daniel.mojica@uconn.edu</div>
+                        <div id="img2">{user_details.decrypted_email}</div>
                         <div></div>
                     
                 </div>
