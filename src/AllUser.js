@@ -10,10 +10,10 @@ const Allusers = () => {
 
     const [users, setuser] = useState([])
     useEffect(() => {
-        Allusers();
+        Allusers1();
     }, [])
 
-    async function Allusers() {
+    async function Allusers1() {
         //const element = document.querySelector('#post-request-set-headers .article-id');
         const limit = { limit: 50, skip: 0 }
         const headers = {
@@ -64,9 +64,12 @@ const Allusers = () => {
                                 <div className="th action">
                                     <div className="view1" onClick={()=>window.location.href='/Notification'}>send</div>
                                 </div>
-                                <div className="th action">
-                                    <div className="view2" onClick={()=>window.location.href='/last'}>view</div>
-                                </div>
+                                <Link to={'/details/'+ user.decrypted_email}>
+                                    <div className="th action">
+                                        <div className="view2" >view</div>
+                                    </div>
+                                </Link>
+                                
                             </div>
                         </div>
                     ))}
