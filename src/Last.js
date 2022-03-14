@@ -3,6 +3,7 @@ import angle from './angle-left.png';
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const Last = () => {
     const [user_details,setuser_details] = useState([])
@@ -10,6 +11,7 @@ const Last = () => {
         lastuser();
     },[])
     async function lastuser(){
+        const {email}= useParams
         const headers={
            authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc3NDQ5NzEsImRhdGEiOnsiaWQiOiI2MjA3Y2U4ODBlNGFjMGY4MzgzZDkyNGIiLCJlbWFpbCI6InJpY2tAYWRtaW4uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY0NjIwODk3MX0.Ow8eVdNv7mFC5DCZWl6HTDEUwnkTEiq71tVyTBzJDBk'
 
