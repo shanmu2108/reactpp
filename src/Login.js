@@ -37,6 +37,7 @@ const Login = () => {
 
 
 	async function login() {
+		
 		console.log(email, password);
 		let item = { email, password }
 		let endpoint = await fetch("https://api.playinvicta.com/api/v1/auth/user_login", {
@@ -49,9 +50,11 @@ const Login = () => {
 			body: JSON.stringify(item)
 		})
 		endpoint = await endpoint.json();
+		console.log(endpoint)
 		//localStorage.setItem("user-data",json.stringify(endpoint))
 		window.localStorage.setItem('token', "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxNTYwMDMsImRhdGEiOnsiaWQiOiI2MjA3Y2U4ODBlNGFjMGY4MzgzZDkyNGIiLCJlbWFpbCI6InJpY2tAYWRtaW4uY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY0NTYyMDAwM30.RV0hrPYE13Y01ahLNp5cgP9OGsy94Zy32FJ-Oezl4VI");
 		navigate("/allUsers");
+		
 	}
 
 

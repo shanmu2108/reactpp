@@ -3,11 +3,11 @@ import angle from './angle-left.png';
 import { Link,useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 
 const Last = () => {
     const [user_details,setuser_details] = useState([])
     const params=useParams();
+    const [data,setData]=useState([]);
     useEffect(() => {
         lastuser();
     },[])
@@ -18,9 +18,24 @@ const Last = () => {
 
         };
         let response = await axios.post('https://api.playinvicta.com/api/v1/admin/user_details',{email:params.email},{headers})
-        setuser_details(response.data.data)
-    
-        console.log(response)
+        setuser_details(response.data.data);
+        const arr=response.data.data.challenges[0].challenges;
+        setData(arr);
+        console.log(arr);
+        // arr.map((item)=>{
+        //     return(
+        //         <div>
+        //               {item.answer}
+        //               {item.node.data.description}
+        //               {item.node.data.title}
+        //               {item.node.data.subtitle}
+        //         </div>
+        //     )
+        // })
+        // console.log(arr[0].answer);
+        // console.log(arr[0].node.data.description)
+        // console.log(arr[0].node.data.title)
+        // console.log(arr[0].node.data.subtitle)
     }
     return (
         <div className="last">
@@ -43,8 +58,17 @@ const Last = () => {
                         <div></div>
                     
                 </div>
+                
                 <div className="attitude">
                     Attitude of Gratitude
+                     {data.map((item, index)=>{
+                <div key={index + 1}>
+                      {item.answer}
+                      {item.node.data.description}
+                      {item.node.data.title}
+                      {item.node.data.subtitle}
+                </div>
+        })} 
                 </div>
                 <div className="answers">
                     Try it answers
